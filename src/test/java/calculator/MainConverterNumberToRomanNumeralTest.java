@@ -1,2 +1,5 @@
-package calculator;public class MainConverterNumberToRomanNumeralTest {
+package calculator;
+
+public class MainConverterNumberToRomanNumeralTest {
+
 }
