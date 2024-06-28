@@ -2,21 +2,39 @@ package calculator;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Scanner;
+
+import static java.lang.Integer.parseInt;
 
 public class ConverterNumberToRomanNumeral {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Entrez un nombre:");
+        String input = scanner.nextLine();
+        scanner.close();
 
-        String result = convertNumberToRomanNumeral(1);
-        System.out.println(result);
+        String result = convertNumberToRomanNumeral(parseInt(input));
+        System.out.println("Le nombre " + input + " en chiffres romains est: " + result);
     }
 
     public static String convertNumberToRomanNumeral(int numberToConvert) {
         StringBuilder result = new StringBuilder();
+        int remainsToConvert = numberToConvert;
         Map<String, Integer> romanNumeralsValues = getRomanNumeralsValues();
 
-        for (Map.Entry<String, Integer> entry : romanNumeralsValues.entrySet()) {
-            if (entry.getValue() == numberToConvert) {
-                result.append(entry.getKey());
+        while (remainsToConvert > 0) {
+            for (Map.Entry<String, Integer> entry : romanNumeralsValues.entrySet()) {
+
+                String romanNumeral = entry.getKey();
+                int value = entry.getValue();
+
+                if (remainsToConvert >= value) {
+                    int numberOfThisRomanNumeral = remainsToConvert / value;
+                    remainsToConvert = remainsToConvert % value;
+
+                    result.append(String.valueOf(romanNumeral).repeat(Math.max(0, numberOfThisRomanNumeral)));
+                }
+
             }
         }
 

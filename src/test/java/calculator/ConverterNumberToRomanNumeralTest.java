@@ -67,4 +67,15 @@ public class ConverterNumberToRomanNumeralTest {
         assertThat(ConverterNumberToRomanNumeral.convertNumberToRomanNumeral(1000)).isEqualTo("M");
     }
 
+    @Test
+    public void testconvertNumberToRomanNumeral_III() {
+        assertThat(ConverterNumberToRomanNumeral.convertNumberToRomanNumeral(3)).isEqualTo("III");
+    }
+
+    @Test
+    public void testconvertNumberToRomanNumeral_3999() {
+        assertThat(ConverterNumberToRomanNumeral.convertNumberToRomanNumeral(3999)).isEqualTo("MMMCMXCIX");
+    }
+
+
 }
