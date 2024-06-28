@@ -13,8 +13,12 @@ public class ConverterNumberToRomanNumeral {
         String input = scanner.nextLine();
         scanner.close();
 
-        String result = convertNumberToRomanNumeral(parseInt(input));
-        System.out.println("Le nombre " + input + " en chiffres romains est: " + result);
+        try {
+            String result = convertNumberToRomanNumeral(parseInt(input));
+            System.out.println("Résultat: " + result);
+        } catch (Exception e) {
+            System.out.println("Erreur dans la conversion du nombre en chiffre romain");
+        }
     }
 
     public static String convertNumberToRomanNumeral(int numberToConvert) {
