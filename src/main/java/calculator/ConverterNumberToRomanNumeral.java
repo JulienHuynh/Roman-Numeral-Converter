@@ -18,6 +18,10 @@ public class ConverterNumberToRomanNumeral {
     }
 
     public static String convertNumberToRomanNumeral(int numberToConvert) {
+        if (numberToConvert <= 0 || numberToConvert > 3999) {
+            throw new IllegalArgumentException("Le nombre doit être compris entre 1 et 3999");
+        }
+
         StringBuilder result = new StringBuilder();
         int remainsToConvert = numberToConvert;
         Map<String, Integer> romanNumeralsValues = getRomanNumeralsValues();
@@ -25,8 +29,8 @@ public class ConverterNumberToRomanNumeral {
         while (remainsToConvert > 0) {
             for (Map.Entry<String, Integer> entry : romanNumeralsValues.entrySet()) {
 
-                String romanNumeral = entry.getKey();
-                int value = entry.getValue();
+                String romanNumeral = entry.getKey(); // ex: "M"
+                int value = entry.getValue(); // ex: 1000
 
                 if (remainsToConvert >= value) {
                     int numberOfThisRomanNumeral = remainsToConvert / value;

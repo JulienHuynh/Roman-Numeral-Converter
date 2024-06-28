@@ -2,6 +2,7 @@ package calculator;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ConverterNumberToRomanNumeralTest {
@@ -77,5 +78,25 @@ public class ConverterNumberToRomanNumeralTest {
         assertThat(ConverterNumberToRomanNumeral.convertNumberToRomanNumeral(3999)).isEqualTo("MMMCMXCIX");
     }
 
+    @Test
+    public void testNumberBelowRangeThrowsException() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            ConverterNumberToRomanNumeral.convertNumberToRomanNumeral(0);
+        });
+        assertEquals("Le nombre doit être compris entre 1 et 3999", exception.getMessage());
+
+        exception = assertThrows(IllegalArgumentException.class, () -> {
+            ConverterNumberToRomanNumeral.convertNumberToRomanNumeral(-1);
+        });
+        assertEquals("Le nombre doit être compris entre 1 et 3999", exception.getMessage());
+    }
+
+    @Test
+    public void testNumberAboveRangeThrowsException() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            ConverterNumberToRomanNumeral.convertNumberToRomanNumeral(4000);
+        });
+        assertEquals("Le nombre doit être compris entre 1 et 3999", exception.getMessage());
+    }
 
 }
